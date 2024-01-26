@@ -244,8 +244,8 @@ export default function UserProvider({children})
         logout,
         currentUser,
         delete_your_account,
-        authToken
-
+        authToken,
+        setCurrentUser
         // pass all your variables and function
     }
 

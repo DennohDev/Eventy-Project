@@ -11,7 +11,7 @@ export default function OrganizerProvier({children})
 {
     const [onchange, setOnchange] = useState(false)
     // const [authToken, setAuthToken] = useState(()=> sessionStorage.getItem("authToken")? sessionStorage.getItem("authToken"): null )
-    const [currentUser, setCurrentUser] = useState(null)
+    const [currentOrganizer, setCurrentUser] = useState(null)
     const url = "http://localhost:5000"
 
      const navigate = useNavigate()
@@ -232,7 +232,7 @@ export default function OrganizerProvier({children})
 
     }, [authToken, onchange])
 
-    console.log("current user", currentUser)
+    console.log("current user", currentOrganizer)
 
 
 
@@ -242,7 +242,7 @@ export default function OrganizerProvier({children})
         login,
         updateUser,
         logout,
-        currentUser,
+        currentOrganizer,
         delete_your_account
 
         // pass all your variables and function

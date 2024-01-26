@@ -13,12 +13,14 @@ import EventDetails from './pages/EventDetails';
 import OrganizerRegister from "./pages/Organizers/OrganizerRegister";
 import OrganizerLogin from "./pages/Organizers/OrganizerLogin";
 import OrganizerHome from "./pages/Organizers/OrganizerHome";
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
         <EventsProvider>
+        <AuthProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -33,6 +35,7 @@ function App() {
             <Route path="organizers/home"  element={<OrganizerHome />}/>
           </Route>
         </Routes>
+        </AuthProvider>
         </EventsProvider>
       </UserProvider>
     </BrowserRouter>

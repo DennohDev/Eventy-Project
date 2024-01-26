@@ -27,6 +27,8 @@ jwt.init_app(app)
 
 app.register_blueprint(user_bp)
 app.register_blueprint(auth_bp)
+app.register_blueprint(organizer_bp)
+app.register_blueprint(orgauth_bp)
 
 # Operations CRUD
 @app.route('/')
@@ -114,72 +116,72 @@ class UserByID(Resource):
 api.add_resource(UserByID, '/users/<int:id>')
         
     
-class OrganizerRegistration(Resource):
-    def post(self):
-        data = request.get_json()
+# class OrganizerRegistration(Resource):
+#     def post(self):
+#         data = request.get_json()
         
-        organizer = Organizer(
+#         organizer = Organizer(
             
-            username=data['username'],
-            email=data['email'],
-            phone=data['phone'],
-            password=data['password'],
+#             username=data['username'],
+#             email=data['email'],
+#             phone=data['phone'],
+#             password=data['password'],
                  
-        )
+#         )
         
-        try:
-            db.session.add(organizer)
-            db.session.commit()
+#         try:
+#             db.session.add(organizer)
+#             db.session.commit()
             
         
-        except Exception as e:
-            db.session.rollback()
-            abort(500, error=f"Error creating organizer: {str(e)}") 
+#         except Exception as e:
+#             db.session.rollback()
+#             abort(500, error=f"Error creating organizer: {str(e)}") 
         
-        finally:
-            db.session.close()
+#         finally:
+#             db.session.close()
         
-        response = make_response(jsonify({'Message': 'Organizer successfully created'}), 201)
-        return response
+#         response = make_response(jsonify({'Message': 'Organizer successfully created'}), 201)
+#         return response
     
-    def get(self):
-        organizers = Organizer.query.all()
+#     def get(self):
+#         organizers = Organizer.query.all()
         
-        if not organizers:
-            abort(404, message="No organizer records found")
+#         if not organizers:
+#             abort(404, message="No organizer records found")
         
-        response = [{
-            "id": organizer.id,
-            "username": organizer.username,
-            "email": organizer.email,
-            "phone": organizer.phone,
-            "password": organizer.password,
-              } for organizer in organizers] 
+#         response = [{
+#             "id": organizer.id,
+#             "username": organizer.username,
+#             "email": organizer.email,
+#             "phone": organizer.phone,
+#             "password": organizer.password,
+#               } for organizer in organizers] 
         
         
-        return make_response(
-            jsonify(response),
-            200
-        )
-    def login(self):
-        data = request.get_json()
+#         return make_response(
+#             jsonify(response),
+#             200
+#         )
+#     def login(self):
+#         data = request.get_json()
 
-        username = data.get('username')
-        password = data.get('password')
+#         username = data.get('username')
+#         password = data.get('password')
 
-        if not username or not password:
-            abort(400, error="Both username and password are required for login")
+#         if not username or not password:
+#             abort(400, error="Both username and password are required for login")
 
-        organizer = Organizer.query.filter_by(username=username, password=password).first()
+#         organizer = Organizer.query.filter_by(username=username, password=password).first()
 
-        if not organizer:
-            abort(401, error="Invalid username or password")
+#         if not organizer:
+#             abort(401, error="Invalid username or password")
 
-        response = make_response(jsonify({'Message': 'Login successful'}), 200)
-        return response
+#         response = make_response(jsonify({'Message': 'Login successful'}), 200)
+#         return response
 
-api.add_resource(OrganizerRegistration, '/organizers')
-api.add_resource(OrganizerRegistration, '/organizers/login', endpoint='login')  
+# api.add_resource(OrganizerRegistration, '/organizers')
+# api.add_resource(OrganizerRegistration, '/organizers/login', endpoint='login')  
 
         
     

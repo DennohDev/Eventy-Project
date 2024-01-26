@@ -10,7 +10,7 @@ function Layout() {
   return (
     <div>
         <NavBar/>
-        <div >
+        <div>
             <Outlet/>
         </div>
         <Footer/>

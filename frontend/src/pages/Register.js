@@ -27,7 +27,7 @@ export default function Register() {
 
 
   return (
-  <div className='container d-flex align-items-center justify-content-center vh-100, '>
+  <div id="register" className='container d-flex align-items-center justify-content-center vh-100, '>
 
     <div className='col-md-8 mt-5 card pt-3 pb-4 px-3'>
       <h3 className='text-center mt-4'>Register</h3>
