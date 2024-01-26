@@ -9,6 +9,7 @@ const BookedEventList = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log("booked: ",booked)
 
   return (
     <div className="container mt-4">

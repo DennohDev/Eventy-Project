@@ -9,15 +9,18 @@ const EventsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Fetch the current users token from the User context
-  const { authtoken } = useContext(UserContext);
+  const { authToken } = useContext(UserContext);
 
   const requestOptions = {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${authtoken}`,
+      'Accept': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
   }
+  
+  console.log("authtoken: ",authToken)
 
   // Fetch events data when the component mounts
   useEffect(() => {
@@ -25,7 +28,7 @@ const EventsProvider = ({ children }) => {
       try {
         const response = await fetch('http://localhost:5000/authenticated_user', requestOptions);
         const data = await response.json();
-        setBooked(data);
+        setBooked(data.events);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -55,7 +58,8 @@ const EventsProvider = ({ children }) => {
   console.log(events)
 
   return (
-    <EventsContext.Provider value={{ events, loading }}>
+    <EventsContext.Provider value={{ events, loading, authToken, booked
+     }}>
       {children}
     </EventsContext.Provider>
   );
