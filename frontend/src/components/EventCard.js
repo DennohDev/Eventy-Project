@@ -14,7 +14,7 @@ const EventList = () => {
       return;
     }
 
-    fetch('http://localhost:5000/bookedevents', {
+    fetch('https://eventy-project.onrender.com/bookedevents', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

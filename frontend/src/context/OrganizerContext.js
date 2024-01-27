@@ -12,7 +12,7 @@ export default function OrganizerProvier({children})
     const [onchange, setOnchange] = useState(false)
     // const [authToken, setAuthToken] = useState(()=> sessionStorage.getItem("authToken")? sessionStorage.getItem("authToken"): null )
     const [currentUser, setCurrentUser] = useState(null)
-    const url = "http://localhost:5000"
+    const url = "https://eventy-project.onrender.com"
 
      const navigate = useNavigate()
 

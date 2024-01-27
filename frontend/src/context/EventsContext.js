@@ -26,7 +26,7 @@ const EventsProvider = ({ children }) => {
   useEffect(() => {
     const fetchBookedEvents = async () => {
       try {
-        const response = await fetch('http://localhost:5000/authenticated_user', requestOptions);
+        const response = await fetch('https://eventy-project.onrender.com/authenticated_user', requestOptions);
         const data = await response.json();
         setBooked(data.events);
         setLoading(false);
@@ -44,7 +44,7 @@ const EventsProvider = ({ children }) => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://localhost:5000/events');
+        const response = await fetch('https://eventy-project.onrender.com/events');
         const data = await response.json();
         setEvents(data);
         setLoading(false);

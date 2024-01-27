@@ -12,7 +12,7 @@ export default function OrganizerRegister() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000";
+    const url = "https://eventy-project.onrender.com";
     fetch(`${url}/organizers`, {
       method: "POST",
       headers: {
