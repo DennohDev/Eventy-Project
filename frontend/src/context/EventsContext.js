@@ -37,6 +37,7 @@ const EventsProvider = ({ children }) => {
     };
 
     fetchBookedEvents();
+    // eslint-disable-next-line
   }, []);
   console.log("booked events", booked)
   // Fetch events data when the component mounts
