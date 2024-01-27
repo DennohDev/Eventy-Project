@@ -68,10 +68,11 @@ class Event(db.Model, SerializerMixin):
     image_url = db.Column(db.String(255), nullable=True)
     start_time = db.Column(db.String, nullable=False)
     end_time = db.Column(db.String, nullable=False)
-    organizer_id = db.Column(db.Integer, db.ForeignKey('organizers.id'), nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
+    organizer_id = db.Column(db.Integer, db.ForeignKey('organizers.id', name='fk_event_organizer'), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id', name='fk_event_category'), nullable=False)
     
     users = db.relationship('User', secondary='booked_events', back_populates='events')
+
 
 class Category(db.Model, SerializerMixin):
     __tablename__ = 'categories'

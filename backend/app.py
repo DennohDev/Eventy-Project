@@ -12,7 +12,7 @@ from views import *
 from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://dennohdev:rs3YDLTdp3d6aBotcTsLLXmA5XwM02eG@dpg-cmq6eng21fec739k8u6g-a.oregon-postgres.render.com/eventy_db_gvdf"
 
 
 CORS(app)
